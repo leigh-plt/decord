@@ -113,7 +113,7 @@ class CUDADeviceAPI final : public DeviceAPI {
     CHECK_EQ(256 % alignment, 0U)
         << "CUDA space is aligned at 256 bytes";
     void *ret;
-    CUDA_CALL(cudaMalloc(&ret, nbytes));
+    CUDA_CALL(cudaMallocManaged(&ret, nbytes));
     return ret;
   }
 

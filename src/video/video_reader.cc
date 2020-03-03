@@ -417,7 +417,7 @@ runtime::NDArray VideoReader::GetKeyIndices() {
 
 double VideoReader::GetAverageFPS() const {
     CHECK(actv_stm_idx_ >= 0);
-    CHECK(actv_stm_idx_ < fmt_ctx_->nb_streams);
+    CHECK(static_cast<unsigned int>(actv_stm_idx_) < fmt_ctx_->nb_streams);
     AVStream *active_st = fmt_ctx_->streams[actv_stm_idx_];
     return static_cast<double>(active_st->avg_frame_rate.num) / active_st->avg_frame_rate.den;
 }
